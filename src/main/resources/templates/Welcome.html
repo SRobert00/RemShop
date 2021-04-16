@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <title>RemShop</title>
+    <div th:replace="fragments/header :: header-css"/>
+    <link th:href="@{/css/Welcome.css}" rel="stylesheet"/>
+
+</head>
+
+<body class="d-flex flex-column" style="min-height:100vh;">
+<div th:replace="fragments/header :: header"/>
+
+<div class="cpr" style="background-image:url(https://previews.123rf.com/images/a7880s/a7880s1406/a7880s140600037/29386029-car-service-and-some-types-of-transportation-background-.jpg)";>
+
+    <br><br><br><br><br>
+
+    <div class = "container flex-fill shadow-lg p-3 mb-5 " style="background-color: rgba(255, 255, 255, 0.95);; border-radius:25px;overflow:hidden;">
+        <div class="container flex-fill shadow-none p-3 mb-6">
+            <div sec:authorize="isAuthenticated()" style="color:white;">
+                <div class="container">
+
+                </div>
+                <form id="logoutForm" method="POST" th:action="@{/logout}">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form>
+
+                <h2 style="color:black">Welcome <span sec:authentication="name" style="color:black">Welcome</span></h2>
+                <br>
+
+            </div>
+
+
+            <div class="card-group">
+                <div class="card card shadow-lg" id = "aCard6">
+                    <a th:href="@{/Tools}"> <img th:src="@{/images/tools.jpg}" alt="..."></a>
+                    <div class="card-body">
+                        <a th:href="@{/Tools}"><h5 class="card-title" style="text-align: center; color:black">Tools</h5></a>
+                    </div>
+                </div>
+                <div class="card card shadow-lg" id = "aCard2">
+                    <a th:href="@{/Batteries}"> <img th:src="@{/images/battery.jpg}" alt="..."></a>
+                    <div class="card-body">
+                        <a th:href="@{/Batteries}"><h5 class="card-title" style="text-align: center; color:black">Batteries</h5></a>
+                    </div>
+                </div>
+                <div class="card card shadow-lg" id = "aCard3">
+                    <a th:href="@{/Oil}"> <img th:src="@{/images/oil.jpg}" alt="..."></a>
+                    <div class="card-body">
+                        <a th:href="@{/Oil}"><h5 class="card-title" style="text-align: center; color:black">Engine Oil</h5></a>
+                    </div>
+                </div>
+            </div>
+
+            <br><br>
+            <div class="card-group">
+                <div class="card card shadow-lg" id = "aCard4">
+                    <a th:href="@{/Tires}"> <img th:src="@{/images/tires.jpg}" alt="..."></a>
+                    <div class="card-body">
+                        <a th:href="@{/Tires}"><h5 class="card-title" style="text-align: center; color:black">Tires</h5></a>
+                    </div>
+                </div>
+                <div class="card card shadow-lg" id = "aCard5">
+                    <a th:href="@{/Sensors}" style="text-decoration:none;"> <img th:src="@{/images/sensors.jpg}" alt="..."></a>
+                    <div class="card-body">
+                        <a th:href="@{/Sensors}"><h5 class="card-title" style="text-align: center; color:black;">Sensors</h5></a>
+                    </div>
+                </div>
+                <div class="card card shadow-lg" id = "aCard1">
+                    <a th:href="@{/CarParts}"> <img th:src="@{/images/parts.jpg}" alt="..."></a>
+                    <div class="card-body">
+                        <a th:href="@{/CarParts}"><h5 class="card-title" style="text-align: center; color:black">Car Parts</h5></a>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+
+<script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin = "anonymous">
+</script>
+
+<!-- Popper -->
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity = "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin = "anonymous">
+</script>
+
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src =" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity = "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin = "anonymous">
+</script>
+</body>
+</html>

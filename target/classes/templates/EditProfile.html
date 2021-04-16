@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <title>RemShop- Shopping Cart</title>
+    <div th:replace="fragments/header :: header-css"/>
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
+    <link th:href="@{/css/EditProfile.css}" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="cpr" style="background-image:url(https://previews.123rf.com/images/a7880s/a7880s1406/a7880s140600037/29386029-car-service-and-some-types-of-transportation-background-.jpg)";>
+
+    <br><br><br><br><br>
+
+    <div class = "container flex-fill shadow-lg p-3 mb-5" style="background-color: rgba(255, 255, 255, 0.95);; border-radius:25px;overflow:hidden;" th:object="${loggedUser}">
+
+        <form th:action="@{/SaveChanges}" th:object="${burnerUser}" method="post">
+
+            <div class = "userCurrentInfo">
+                <h5 class = "currentInfo">Current username: </h5>
+                <h5 th:text="${loggedUser.username}"></h5>
+            </div>
+            <div class = "editProfileInput-Container">
+                <label class = "labels">Username</label>
+                <input class = "editProfileField" th:field="${burnerUser.username}" type="text" name="username" placeholder = "..."/>
+            </div>
+
+            <br><br>
+
+            <div class = "userCurrentInfo">
+                <h5 class = "currentInfo">Current name: </h5>
+                <h5 th:text="${loggedUser.fullName}"></h5>
+            </div>
+            <div class = "editProfileInput-Container">
+                <label class = "labels">Full name</label>
+                <input class = "editProfileField" th:field="${burnerUser.fullName}" type="text" name="fullname" placeholder = "..."/>
+            </div>
+
+            <br><br>
+
+            <div class = "userCurrentInfo">
+                <h5 class = "currentInfo">Current address: </h5>
+                <h5 th:text="${loggedUser.address}"></h5>
+            </div>
+            <div class = "editProfileInput-Container">
+                <label class = "labels">Address</label>
+                <input class = "editProfileField" th:field="${burnerUser.address}" type="text" name="address" placeholder = "..."/>
+            </div>
+
+            <br><br>
+
+            <div class = "userCurrentInfo">
+                <h5 class = "currentInfo">Current email: </h5>
+                <h5 th:text="${loggedUser.email}"></h5>
+            </div>
+            <div class = "editProfileInput-Container">
+                <label class = "labels">Email</label>
+                <input class = "editProfileField" th:field="${burnerUser.email}" type="text" name="email" placeholder = "..."/>
+            </div>
+
+            <br><br>
+
+            <div class = "userCurrentInfo">
+                <h5 class = "currentInfo" style = "color:red; font-weight:500"> <i class="fas fa-exclamation-triangle"></i> &nbsp; Pentru ca schimbarile sa aiba efect este necesar sa va autentificati din nou.</h5>
+            </div>
+
+            <button class="editProfileButtons" type="submit">Save changes</button>
+        </form>
+</div>
+
+        <div th:replace="fragments/footer :: footer"/>
+
+        <script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin = "anonymous">
+        </script>
+
+        <!-- Popper -->
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity = "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin = "anonymous">
+        </script>
+
+        <!-- Latest compiled and minified Bootstrap JavaScript -->
+        <script src =" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity = "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin = "anonymous">
+        </script>
+
+    </div>
+</div>
+</body>
+</html>

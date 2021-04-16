@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <title>RemShop-Registration</title>
+    <div th:replace="fragments/header :: header-css"/>
+    <link th:href="@{/css/Welcome.css}" rel="stylesheet"/>
+    <link th:href="@{/css/EditProfile.css}" rel="stylesheet"/>
+
+</head>
+
+<body class="d-flex flex-column" style="min-height:100vh;">
+<div th:replace="fragments/header :: header"/>
+
+<div class="cpr" style="background-image:url(https://previews.123rf.com/images/a7880s/a7880s1406/a7880s140600037/29386029-car-service-and-some-types-of-transportation-background-.jpg)";>
+
+    <br><br><br><br><br>
+
+    <div class = "container flex-fill shadow-lg p-3 mb-5 " style="background-color: rgba(255, 255, 255, 0.95);; border-radius:25px;overflow:hidden;">
+        <div class="container flex-fill shadow-none p-3 mb-6">
+
+            <form method="POST" class="form-signin" th:object="${userForm}" th:action="@{/registration}">
+                <h2 class="form-signin-heading" style="color:black">Create your account</h2>
+                <div class="form-group">
+                    <input type="text" th:field="*{username}" class="form-control" placeholder="Username"
+                           autofocus="true">
+                    <span class="has-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" th:field="*{password}" class="form-control" placeholder="Password">
+                    <span class="has-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" th:field="*{passwordConfirm}" class="form-control"
+                           placeholder="Confirm your password">
+                    <span class="has-error" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" th:field="*{fullName}" class="form-control"
+                           placeholder="Name Surname">
+                </div>
+                <div class="form-group">
+                    <input type="text" th:field="*{address}" class="form-control"
+                           placeholder="Address">
+                </div>
+                <div class="form-group">
+                    <input type="text" th:field="*{email}" class="form-control"
+                           placeholder="Email">
+                    <span class="has-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                </div>
+
+                <button class="editProfileButtons" type="submit">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div th:replace="fragments/footer :: footer"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin = "anonymous">
+</script>
+
+<!-- Popper -->
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity = "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin = "anonymous">
+</script>
+
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src =" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity = "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin = "anonymous">
+</script>
+</body>
+</html>

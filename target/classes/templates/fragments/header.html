@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <div th:fragment="header-css">
+        <!-- this is header-css -->
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+        <link rel = "stylesheet"
+              href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+              <link th:href="@{/css/header.css}" rel="stylesheet"/>
+
+    </div>
+</head>
+<body>
+<div th:fragment="header">
+    <!-- this is header -->
+    <div class="myNavBarContainer" id = "myNavBarContainer" >
+    <nav class="navbar navbar-expand-lg navbar-light " >
+
+        <!-- logo -->
+        <a th:href="@{/}"><img class="logoPosition" id = "myLogo" th:src="@{/images/logo2.png}"/></a>
+
+
+        <div class="navbar-collapse collapse justify-content-stretch" id="navbar5">
+
+            <!-- search -->
+            <div class = "searchInput-container">
+            <form th:action="@{/SearchResults}" th:object="${product}" method="GET">
+                    <input class = "searchField" type="text" name="keyword" id="keyword" th:value="${keyword}" required /><button type="submit"  class = "searchButton" >Search</button>
+            </form>
+            </div>
+
+            <!-- Login Button -->
+            <ul class="navbar-nav ml-auto">
+                <li th:if="${#authorization.expression('!isAuthenticated()')}" style="margin-left: 20px;">
+                    <button class = "navBarButtons" onclick="document.getElementById('id01').style.display='block'">Login</button>
+                </li>
+
+                <div class="dropdown" sec:authorize="isAuthenticated()">
+                    <button class="dropbtn">My Profile</button>
+                    <div class="dropdown-content">
+
+                        <a th:href="@{/UsersManagement}" class = "navBarLinks" role="button" sec:authorize="hasAuthority('ADMIN')" ><i class="fas fa-users-cog" style = "color:gold"></i>&nbsp;Users management</a>
+
+                        <a th:href="@{/ProductsManagement}" class = "navBarLinks" role="button" sec:authorize="hasAuthority('ADMIN')" ><i class="fas fa-clipboard-list" style = "color:gold;text-shadow: 0 0 black;"></i>&nbsp;Products management</a>
+
+                        <a th:href="@{/EditProfile}" class="navBarLinks" role = "button" ><i class="fa fa-user" ></i> &nbsp; Edit profile</a>
+
+                        <a class = "navBarLinks" href="/logout" th:if="${#authorization.expression('isAuthenticated()')}" th:href="@{#}" onclick="$('#form').submit();">
+                            <i class="fas fa-sign-out-alt"></i> &nbsp;Logout
+                            <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+                        </a>
+                    </div>
+                </div>
+
+                <li>
+                    <button class = "navBarButtons" sec:authorize="isAuthenticated()">
+
+                        <a th:href="@{/ShoppingCart}" class = "navBarLinks" role="button"><i class="fas fa-shopping-cart"></i>&nbsp;Cart</a>
+                    </button>
+                </li>
+
+                <li th:if="${#authorization.expression('!isAuthenticated()')}" style="margin-left: 20px;">
+                    <button class = "navBarButtons">
+                        <a class = "navBarLinks" th:href="@{/registration}"><i class="fas fa-sign-up-alt">&nbsp;</i> Sign-up</a>
+                    </button>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    </div>
+
+    <!-- modal start -->
+    <div id="id01" class="modal">
+
+        <!-- modal  -->
+        <form class="modalContent" id="modalContent" method="POST"   th:action="@{/login}" >
+            <!-- close modal-->
+            <span onclick="document.getElementById('id01').style.display='none'"class="close" title="Close Modal">&times;</span>
+            <div class="imgContainer">
+                <img th:src="@{/images/logo2.png}" alt="...">
+            </div>
+
+            <div class="container">
+                <form class="form-signin" method="POST"   th:action="@{/login}">
+                    <h2 class="modalHeader">Welcome,sign in to continue</h2>
+
+                    <div class="form-group">
+                        <span th:text="${message}"></span>
+
+                        <label for="usernameField"><b>Username</b></label>
+
+                        <div class = "input-container">
+                            <i class="fa fa-user icon" ></i>
+                            <input name="username" type="text" class="modalField" placeholder="Username"
+                                   autofocus="true" id = "usernameField"/>
+                        </div>
+
+                        <label for="pwdField"><b>Password</b></label>
+                        <div class ="input-container">
+                            <i class="fa fa-key icon"></i>
+                            <input id="pwdField" name="password" type="password" class="modalField" placeholder="Password"/>
+                        </div>
+                        <span id="hasError" th:text="${error}"></span>
+
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+                        <button class="modalButtons" type="submit">Log In</button>
+                        <a style="font-size:23px;" th:href="@{/registration}"><i class="fas fa-sign-up-alt">&nbsp;</i> No account?Register here!</a>
+
+                    </div>
+                </form>
+            </div>
+
+        </form>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/header.js}"></script>
+    <script>
+     if(document.getElementById("hasError").innerHTML.length > 1 ) {
+      document.getElementById('id01').style.display='block';
+     }
+    </script>
+</div>
+</div>
+<br><br>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

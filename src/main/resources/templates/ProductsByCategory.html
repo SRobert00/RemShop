@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <title>RemShop-Automobile Shop</title>
+    <div th:replace="fragments/header :: header-css"/>
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
+
+</head>
+<body class="d-flex flex-column" style="min-height:100vh;">
+
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="cpr" style="background-image:url(https://previews.123rf.com/images/a7880s/a7880s1406/a7880s140600037/29386029-car-service-and-some-types-of-transportation-background-.jpg)";>
+
+    <br><br><br><br><br>
+
+    <div class = "container flex-fill shadow-lg p-3 mb-5" style="background-color: rgba(255, 255, 255, 0.95);; border-radius:25px;overflow:hidden;">
+
+        <br>
+        <!--product ddcards-->
+        <div class="card mb-3 shadow-lg" id = "productCard" th:each="aProduct : ${listProducts}">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img id="cardImage" th:attr="src=@{${aProduct.pictureLocation}},title=${aProduct.name},alt=${aProduct.name}" />
+                </div>
+                <div class="col-md-8">
+                        <div class="card-body">
+                            <h2 class="card-title"  th:text = "${aProduct.name}" ><b>Card title</b></h2>
+
+                            <div class = "cardProductCategory">
+                                <h6> <b>Category: </b> </h6>
+                                <h6 class="card-title" th:text = "${aProduct.category}" ></h6>
+                            </div>
+
+                            <div class = "cardProductManufacturer">
+                                <h6> <b>Manufacturer:</b> </h6>
+                                <h6 class="card-title" th:text = "${aProduct.manufacturer}" ></h6>
+                            </div>
+
+                            <div class = "cardProductDescription">
+                                <h6> <b>Description:</b> </h6>
+                                <h6 class="card-title" th:text = "${aProduct.description}" ></h6>
+                            </div>
+
+                            <div class="cardProductPrice">
+                                <h2 class="card-title" th:text = "${aProduct.price}" ></h2>
+                                <h2>$</h2>
+                            </div>
+                            <form th:action="@{/CarParts/{id}(id=${aProduct.productId})}" th:object="${aProduct}" method="post">
+                                <button class="navBarButtons" type="submit"  onClick="window.location.reload();" data-target="#productId">Add to cart</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+
+<script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin = "anonymous">
+</script>
+
+<!-- Popper -->
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity = "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin = "anonymous">
+</script>
+
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src =" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity = "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin = "anonymous">
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+
+#productCard{
+    max-width: 94%;
+    left:2%;
+    border-radius:10px;
+    overflow:hidden;
+    transition:background-color 0.1s;
+    transition:max-width 1s;
+    background-color:white;
+}
+
+#productCard:hover{
+    background-color:rgb(255,223,0, 0.4);
+    max-width:95%;
+}
+
+#cardImage{
+    border-radius:10px;
+}
+
+.card-body{
+    left:50%;
+}
+
+.cardProductCategory{
+    display:flex;
+}
+
+.cardProductManufacturer{
+    display:flex;
+}
+
+.cardProductDescription{
+    display:flex;
+}
+
+.cardProductPrice{
+    left: 90%;
+    display: flex;
+    position: absolute;
+    left: 80%;
+    bottom: 1%;
+    top: auto;
+    right: auto;
+    }
+
+.cardButtons{
+    display:flex;
+}

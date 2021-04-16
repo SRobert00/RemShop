@@ -1,0 +1,284 @@
+.myNavBarContainer{
+    position:fixed;
+    background-color: rgba(255, 255, 255, 1.0);
+    border-radius:0px;
+    width:100%;
+    z-index:9999;
+    transition:0.5s;
+    right:auto;
+    box-shadow: 0 0px 25px 0 rgb(0 0 0);
+}
+
+.searchInput-container {
+    display: flex;
+    width: 30%;
+}
+
+.searchIcon {
+    background-image: linear-gradient(-8deg, rgb(0 2 115), rgb(0 134 194),transparent);
+    color: white;
+    min-width: 50px;
+    text-align: center;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.searchField{
+    width: 60%;
+    padding-left: 8px;
+    outline: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.searchButton{
+    background-image: linear-gradient(75deg, rgb(0 57 115), rgb(229 229 190),transparent);
+    background-size: 300%;
+    background-position: left;
+    color: white;
+    border-style:none;
+    text-align:center;
+    text-decoration:none;
+    padding:3px;
+    padding-right:10px;
+    padding-left:10px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    outline:none;
+    border-style:none;
+    transition: background-size 1s,background-position 1s, box-shadow 1s, color 1s;
+}
+
+
+.logoPosition{
+    height:35px;
+    margin-right:20px;
+    transition:1.5s;
+}
+
+.searchButton:hover{
+    background-size: 350%;
+    background-position: right;
+    box-shadow: 0 15px 27px 0 rgb(229 229 190), 0 8px 16px 0 rgb(0 57 115);
+    font-weight: 500;
+    color:black
+    }
+
+    .searchButton:focus{
+    outline:none;
+
+    }
+
+.modal{
+display: none; /* Hidden by default */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Sit on top */
+   padding-top: 100px; /* Location of the box */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+   background-color: rgb(0 0 0 / 50%);
+   backdrop-filter: blur(10px);
+}
+
+.modalHeader{
+    margin-bottom:20px;
+    color:black;
+}
+
+.modalContent{
+   border-radius: 20px;
+   background-color: #fefefe;
+   margin: auto;
+   padding: 20px;
+   border: 1px solid #888;
+   width: 40%;
+}
+
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.modalField{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.modalButtons{
+   background-image: linear-gradient(75deg, rgb(0 57 115), rgb(229 229 190),transparent);
+   background-size: 300%;
+   background-position: left;
+   width: 100%;
+   height: 40px;
+   margin-top: 20px;
+   margin-bottom: 10px;
+   border-radius: 15px;
+   background-color: #0280ff;
+   box-shadow: 0 7px 27px 0 rgb(0 57 115), 0 8px 16px 0 rgb(229 229 190);
+   color: white;
+   transition: background-size 1s,background-position 1s, box-shadow 1s;
+}
+
+.modalButtons:hover{
+    background-size: 350%;
+    background-position: right;
+    box-shadow: 0 15px 27px 0 rgb(229 229 190), 0 8px 16px 0 rgb(0 57 115);
+    font-weight: 500;
+}
+
+.modalButtons:focus{
+outline:none;
+}
+
+.modalField:focus{
+outline:none;
+border: 2px solid dodgerblue;
+}
+
+.imgContainer {
+  text-align: center;
+  margin: 35px;
+  position: relative;
+}
+
+.icon {
+  padding: 15px;
+  background-image: linear-gradient(-8deg, rgb(0 2 115), rgb(0 134 194),transparent);
+  color: white;
+  min-width: 50px;
+  text-align: center;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+  font-size: 18px;
+}
+
+
+#hasError{
+color:red;
+transition:font-size 1s;
+}
+
+#hasError:hover{
+font-size:20px;
+}
+
+
+
+.navBarButtons{
+           background-image: linear-gradient(75deg, rgb(0 57 115), rgb(229 229 190),transparent);
+           background-size: 300%;
+           background-position: left;
+           : 100%;
+           color: white;
+           transition: background-size 1s,background-position 1s, box-shadow 1s, color 1s;
+           border-radius:5px;
+           border-style:none;
+           text-align:center;
+           text-decoration:none;
+           padding:2px;
+           padding-top: 2px;
+           padding-bottom: 4px;
+           padding-left: 10px;
+           padding-right: 10px;
+           margin-left: 2px;
+           margin-right:2px;
+           font-size: larger;
+}
+
+.navBarButtons:hover{
+    background-size: 350%;
+    background-position: right;
+    box-shadow: 0 0px 15px 0 rgb(229 229 190), 0 8px 16px 0 rgb(0 57 115);
+    color:black;
+    font-weight: 500;
+}
+
+.navBarButtons:focus{
+outline:none;
+}
+
+.navBarLinks{
+text-decoration:none;
+color:white;
+transition:color 1s;
+}
+
+.navBarLinks:hover{
+text-decoration:none;
+color:black;
+}
+
+.dropbtn {
+  background-image: linear-gradient(75deg, rgb(0 57 115), rgb(229 229 190),transparent);
+             background-size: 300%;
+             background-position: left;
+             : 100%;
+             color: white;
+             transition: background-size 1s,background-position 1s, box-shadow 1s, color 1s;
+             border-radius:5px;
+             border-style:none;
+             text-align:center;
+             text-decoration:none;
+             padding:2px;
+             padding-top: 2px;
+             padding-bottom: 4px;
+             padding-left: 10px;
+             padding-right: 10px;
+             margin-left: 2px;
+             margin-right:2px;
+             font-size: larger;
+}
+
+.dropbtn:hover{
+    background-size: 350%;
+    background-position: right;
+    box-shadow: 0 0px 15px 0 rgb(229 229 190), 0 8px 16px 0 rgb(229 229 190);
+    color:black;
+    font-weight: 500;
+    }
+
+.dropdownbtn:hover{
+    background-size: 350%;
+    background-position: right;
+    box-shadow: 0 0px 15px 0 rgb(229 229 190), 0 8px 16px 0 rgb(0 57 115);
+    color:black;
+    font-weight: 500;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+     display: none;
+         position: absolute;
+         left: auto;
+         right: -12%;
+         background-image: linear-gradient(183deg, rgb(255 255 255), rgb(187 187 187));
+         min-width: 137px;
+         z-index: 1;
+         border-radius: 15px;
+         overflow: hidden;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}

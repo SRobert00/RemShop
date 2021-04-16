@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<title>RemShop-Products Management|ADMIN</title>
+<div th:replace="fragments/header :: header-css"/>
+<link th:href="@{/css/main.css}" rel="stylesheet"/>
+<link th:href="@{/css/ProductsManagement.css}" rel="stylesheet"/>
+
+</head>
+<body class="d-flex flex-column" style="min-height:100vh;" sec:authorize="hasAuthority('ADMIN')">
+
+
+<div th:replace="fragments/header :: header"/>
+
+
+
+<div class="cpr" style="background-image:url(https://previews.123rf.com/images/a7880s/a7880s1406/a7880s140600037/29386029-car-service-and-some-types-of-transportation-background-.jpg)";>
+
+<br><br><br><br><br>
+
+<div class = "container flex-fill shadow-lg p-3 mb-5" style="background-color: rgba(255, 255, 255, 0.95); border-radius:25px;">
+
+    <h2 sec:authorize = "isAuthenticated()">Welcome <span sec:authentication="name">Welcome</span></h2>
+
+    <div class="adminPanel">
+        <div id = "openAddProductModalButton">
+            <i class="fa fa-plus fa-3"></i>
+        </div>
+        <button id="adminPanelButton" onclick="document.getElementById('id02').style.display='block'">Add product</button>
+    </div>
+
+    <!-- addProductModal start -->
+    <div id="id02" class="addProductModal">
+
+        <!-- addProductModal  -->
+        <form class="addProductModalContent" id="addProductModalContent" method="POST"   th:action="@{/ProductsManagement/AddNewProduct}" th:object = "${newProduct}" >
+            <!-- close addProductModal-->
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <div class="imgContainer">
+                <img th:src="@{/images/logo2.png}" alt="...">
+            </div>
+
+            <div class="container">
+                <h2 class="addProductModalHeader">Welcome,please complete the required fields to add a new product</h2>
+
+                    <div class = "addProductInput-Container">
+                        <label for = "name" class = "labels">Name</label>
+                        <input name="name" th:field="${newProduct.name}" id = "name" type="text" class="addProductModalField" placeholder="Product name"/>
+                    </div>
+
+                    <div class = "addProductInput-Container">
+                        <label for = "name" class = "labels">Category</label>
+                        <input name="category" th:field="${newProduct.category}" type="text" class="addProductModalField" placeholder="Category of the product"/>
+                    </div>
+
+                    <div class = "addProductInput-Container">
+                        <label for = "name" class = "labels">Manufacturer</label>
+                        <input name="manufacturer" th:field="${newProduct.manufacturer}" type="text" class="addProductModalField" placeholder="Product's manufacturer"/>
+                    </div>
+
+                    <div class = "addProductInput-Container">
+                        <label for = "name" class = "labels">Price</label>
+                        <input name="price" th:field="${newProduct.price}" type="number" step="0.01" class="addProductModalField" placeholder="Set a price" />
+                    </div>
+
+                    <!-- Add a picture -->
+                    <div class = "addProductInput-Container">
+                        <label for = "name" class = "labels">Image</label>
+                        <input name="pictureLocation" th:field="${newProduct.pictureLocation}" type="text" class="addProductModalField" placeholder="Add a picture by file path"/>
+                    </div>
+
+                    <div class = "addProductInput-Container-Description">
+                        <label for = "name" class = "labels-Description">Description</label>
+<!--                        <input name="description" th:field="${newProduct.description}" type="text" class="addProductModalField-Description" placeholder="Description"/>-->
+                        <textarea name="description" th:field="${newProduct.description}" type="text" class="addProductModalField-Description" placeholder="Description"></textarea>
+                    </div>
+
+                    <button class="addProductModalButtons" type="submit">Add new product</button>
+            </div>
+        </form>
+    </div>
+
+    <!--product cards-->
+    <div class="card mb-3 shadow-lg" id = "productCard" th:each="aProduct : ${listProducts}">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img id="cardImage" th:attr="src=@{${aProduct.pictureLocation}},title=${aProduct.name},alt=${aProduct.name}" />
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h2 class="card-title"  th:text = "${aProduct.name}" ><b>Card title</b></h2>
+
+                    <div class = "cardProductCategory">
+                        <h6> <b>Category: </b> </h6>
+                        <h6 class="card-title" th:text = "${aProduct.category}" ></h6>
+                    </div>
+
+                <div class = "cardProductManufacturer">
+                    <h6> <b>Manufacturer:</b> </h6>
+                    <h6 class="card-title" th:text = "${aProduct.manufacturer}" ></h6>
+                </div>
+
+                <div class = "cardProductDescription">
+                    <h6> <b>Description:</b> </h6>
+                    <h6 class="card-title" th:text = "${aProduct.description}" ></h6>
+                </div>
+
+                <div class="cardProductPrice">
+                    <h2 class="card-title" th:text = "${aProduct.price}" ></h2>
+                    <h2>$</h2>
+                </div>
+
+                    <div class = "cardButtons">
+                        <!--Add To Cart-->
+                        <form th:action="@{/ProductsManagement/AddToCart/{id}(id=${aProduct.productId})}" th:object="${aProduct}" method="post">
+                            <button class="navBarButtons" type="submit" data-target="#productId">Add to cart</button>
+                        </form>
+
+                        <!--Delete product-->
+                        <form th:action="@{/ProductsManagement/DeleteById/{id}(id=${aProduct.productId})}" th:object="${aProduct}" method="post">
+                            <button class="navBarButtons" type="submit" data-target="#userId" style = "width: 100%;">Delete</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+
+<script type="text/javascript" th:src="@{/js/ProductsManagement.js}"></script>
+
+<script src = "https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity = "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin = "anonymous">
+</script>
+
+<!-- Popper -->
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity = "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin = "anonymous">
+</script>
+
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src =" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity = "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin = "anonymous">
+</script>
+</body>
+</html>

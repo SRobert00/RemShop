@@ -1,0 +1,9 @@
+
+o
+java:S1192&"MDefine a constant instead of duplicating this literal "listProducts" 7 times.(»‰‰­şÿÿÿÿ8ìŸî²‚/
+u
+java:S11923"SDefine a constant instead of duplicating this literal "ProductsByCategory" 8 times.(å–üÄøÿÿÿÿ8‹„Ò°‚/
+Œ
+java:S4144U"jUpdate this method so that its implementation is not identical to "addToCartProductManagement" on line 47.(ØéÉÏúÿÿÿÿ8Ìâûš‰/
+]
+java:S46847"@Replace this persistent entity with a simple POJO or DTO object.(û£¿¹8Ê¦ßŠ/

@@ -1,0 +1,17 @@
+
+]
+java:S4684h"@Replace this persistent entity with a simple POJO or DTO object.(Â÷ñ8ÙŞ÷á‹/
+e
+java:S1192>"HDefine a constant instead of duplicating this literal "Welcome" 3 times.(³Íãà8ŸŞ³¬Š/
+O
+java:S1128"2Remove this unused import 'java.util.Enumeration'.(»îÜ®8¤öâ‹/
+u
+java:S1192Ä"RDefine a constant instead of duplicating this literal "Descriere exemplu" 6 times.(éÈˆ ÿÿÿÿÿ8›‹öå/
+_
+java:S1128"BRemove this unused import 'javax.servlet.http.HttpSessionContext'.(€‡ÍÔ8¤öâ‹/
+V
+java:S4973l"9Use the "equals" method if value comparison was intended.(—¿›ö8ÙŞ÷á‹/
+]
+java:S4684:"@Replace this persistent entity with a simple POJO or DTO object.(¬ùÄ…8Š±›‚/
+o
+java:S3776h"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(Â÷ñ8ÙŞ÷á‹/

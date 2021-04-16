@@ -1,0 +1,82 @@
+.userCurrentInfo{
+    display:flex;
+}
+
+.currentInfo{
+    margin-left:25px;
+}
+
+.editProfileInput-Container{
+}
+
+.labels{
+    background-image: linear-gradient(124deg, rgb(0 82 159), rgb(0 82 159),rgb(0 82 159 / 64%));
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    height: 40px;
+    width: 10%;
+    padding: 8px;
+    margin-left: 25px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+
+.editProfileField {
+    box-shadow: 0 4px 16px 0 rgb(0 0 0 / 21%);
+    font-weight: 500;
+    height: 40px;
+    width: 85%;
+    transform: translate3d(-4px, 1px, 10px);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.editProfileField:focus{
+    outline:none;
+    border: 2px solid dodgerblue;
+}
+
+.editProfileButtons{
+    background-image: linear-gradient( 124deg, rgb(0 82 159), rgb(50 156 255),rgb(0 82 159));
+    background-size: 300%;
+    background-position: left;
+    width: 95%;
+    height: 40px;
+    margin: 15px;
+    margin-left: 25px;
+    border-radius: 15px;
+    background-color: #0280ff;
+    box-shadow: 0 4px 16px 0 rgb(0 0 0 / 21%);
+    color: white;
+    transition: background-size 1s,background-position 1s, box-shadow 1s;
+}
+
+.editProfileButtons:hover{
+    background-size: 350%;
+    background-position: right;
+    box-shadow: 0 15px 27px 0 rgb(159 141 0 / 5%), 0 8px 16px 0 rgb(3 131 255 / 46%);
+    font-weight: 500;
+}
+
+.editProfileButtons:focus{
+    outline:none;
+}
+
+.editProfileField:focus{
+    outline:none;
+    border: 2px solid dodgerblue;
+}
+
+#quantityInput{
+    text-align: center;
+    width: 60px;
+    height: 40px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#quantityInput:focus{
+outline:none;
+}
